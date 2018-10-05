@@ -1,12 +1,23 @@
 <ion-header>
   <ion-toolbar>
     <ion-title>
-      Ionic Blank
+      Ionic Change Detection Error?
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content padding>
-  The world is your oyster.
-  <p>If you get lost, the <a target="_blank" rel="noopener" href="https://ionicframework.com/docs">docs</a> will be your guide.</p>
+	Items:
+  <ion-list>
+	  <ion-item *ngFor="let item of items$ | async; let i = index">Item {{ i }}: {{ item }}</ion-item>
+  </ion-list>
 </ion-content>
+
+<ion-footer>
+	<ion-toolbar>
+		<ion-buttons>
+			<ion-button color="primary" (click)=addItem()>Add item (works)</ion-button>
+			<ion-button color="danger" (click)=addItemAlert()>Add item via Alert Dialog (issue!)</ion-button>
+		</ion-buttons>
+	</ion-toolbar>
+</ion-footer>
